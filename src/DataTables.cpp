@@ -16,6 +16,7 @@ std::vector<AircraftData> initializeAircraftData()
 	data[static_cast<unsigned int>(Aircraft::Type::Eagle)].textureRect = sf::IntRect(0, 0, 48, 64);
 	data[static_cast<unsigned int>(Aircraft::Type::Eagle)].hasRollAnimation = true;
 	data[static_cast<unsigned int>(Aircraft::Type::Eagle)].fireInterval = sf::seconds(1);
+	data[static_cast<unsigned int>(Aircraft::Type::Eagle)].scoreValue = 0;
 
 	data[static_cast<unsigned int>(Aircraft::Type::Raptor)].hitpoints = 20;
 	data[static_cast<unsigned int>(Aircraft::Type::Raptor)].speed = 80.f;
@@ -26,6 +27,7 @@ std::vector<AircraftData> initializeAircraftData()
 	data[static_cast<unsigned int>(Aircraft::Type::Raptor)].directions.push_back(Direction( 45.f, 80.f));
 	data[static_cast<unsigned int>(Aircraft::Type::Raptor)].directions.push_back(Direction(-45.f, 160.f));
 	data[static_cast<unsigned int>(Aircraft::Type::Raptor)].directions.push_back(Direction( 45.f, 80.f));
+	data[static_cast<unsigned int>(Aircraft::Type::Raptor)].scoreValue = 10;
 
 	data[static_cast<unsigned int>(Aircraft::Type::Avenger)].hitpoints = 40;
 	data[static_cast<unsigned int>(Aircraft::Type::Avenger)].speed = 50.f;
@@ -38,6 +40,7 @@ std::vector<AircraftData> initializeAircraftData()
 	data[static_cast<unsigned int>(Aircraft::Type::Avenger)].directions.push_back(Direction(-45.f, 100.f));
 	data[static_cast<unsigned int>(Aircraft::Type::Avenger)].directions.push_back(Direction(  0.f, 50.f));
 	data[static_cast<unsigned int>(Aircraft::Type::Avenger)].directions.push_back(Direction( 45.f, 50.f));
+	data[static_cast<unsigned int>(Aircraft::Type::Avenger)].scoreValue = 20;
 
 	return data;
 }

@@ -33,6 +33,7 @@ struct AircraftData
 	sf::Time						fireInterval;
 	std::vector<Direction>			directions;
 	bool							hasRollAnimation;
+	int								scoreValue;
 };
 
 struct ProjectileData

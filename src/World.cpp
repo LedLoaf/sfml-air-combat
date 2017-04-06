@@ -10,6 +10,7 @@
 #include <cmath>
 #include <limits>
 #include <set>
+#include <string>
 
 World::World(sf::RenderWindow& window, FontHolder& fonts, SoundPlayer& sounds)
 : mWindow(window)
@@ -25,6 +26,9 @@ World::World(sf::RenderWindow& window, FontHolder& fonts, SoundPlayer& sounds)
 , mPlayerAircraft(nullptr)
 , mEnemySpawnPoints()
 , mActiveEnemies()
+, mScore(0)
+, mScoreDisplay(nullptr)
+, mScorePosition(15.f, mWorldBounds.height - mWorldView.getSize().y + 15.f)
 {
 	loadTextures();
 	buildScene();
@@ -62,22 +66,28 @@ void World::buildScene()
 	sf::IntRect jungleTextureRect(mWorldBounds);
 	jungleTextureRect.height += static_cast<int>(viewHeight);
 
-	// add background sprite to scene
+	// add background sprite
 	auto jungleSprite = std::make_unique<SpriteNode>(jungleTexture, jungleTextureRect);
 	jungleSprite->setPosition(mWorldBounds.left, mWorldBounds.top - viewHeight);
 	mSceneLayers[static_cast<std::size_t>(Layer::Background)]->attachChild(std::move(jungleSprite));
 
-	// add finish line to scene
+	// add finish line
 	sf::Texture& finishTexture = mTextures.get(TextureID::FinishLine);
 	auto finishSprite = std::make_unique<SpriteNode>(finishTexture);
 	finishSprite->setPosition(0.f, -76.f);
 	mSceneLayers[static_cast<std::size_t>(Layer::Background)]->attachChild(std::move(finishSprite));
 
-	// add particle node to the scene
+	// add score node
+	auto score = std::make_unique<TextNode>(mFonts, "SCORE: 0");
+	mScoreDisplay = score.get();
+	mScoreDisplay->setPosition(mScorePosition);
+	mSceneLayers[static_cast<std::size_t>(Layer::Background)]->attachChild(std::move(score));
+
+	// add particle node
 	auto smokeNode = std::make_unique<ParticleNode>(Particle::Type::Smoke, mTextures);
 	mSceneLayers[static_cast<std::size_t>(Layer::LowerAir)]->attachChild(std::move(smokeNode));
 
-	// add propellant particle node to the scene
+	// add propellant particle node
 	auto propellantNode = std::make_unique<ParticleNode>(Particle::Type::Propellant, mTextures);
 	mSceneLayers[static_cast<std::size_t>(Layer::LowerAir)]->attachChild(std::move(propellantNode));
 
@@ -156,11 +166,13 @@ void World::update(sf::Time dt)
 	adaptPlayerVelocity();
 
 	handleCollisions();
+	updateScore();
 	mSceneGraph.removeWrecks();
 	spawnEnemies();
 
 	mSceneGraph.update(dt, mCommandQueue);
 	adaptPlayerPosition();
+	mScoreDisplay->move(0.f, mScrollSpeed * dt.asSeconds());
 
 	updateSounds();
 }
@@ -278,6 +290,23 @@ void World::adaptPlayerVelocity()
 void World::updateSounds()
 {
 	mSounds.removeStoppedSounds();
+}
+
+void World::updateScore()
+{
+	Command command;
+	command.category = static_cast<unsigned int>(Category::EnemyAircraft);
+	command.action = derivedAction<Aircraft>([this] (Aircraft& enemy, sf::Time)
+	{
+		if (!enemy.isScoreCounted() && enemy.isDestroyed())
+		{
+			mScore += enemy.getScoreValue();
+		}
+	});
+
+	mCommandQueue.push(command);
+
+	mScoreDisplay->setString("SCORE: " + std::to_string(mScore), false);
 }
 
 void World::draw()

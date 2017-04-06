@@ -40,6 +40,9 @@ class Aircraft : public Entity
 
 		void					playLocalSound(CommandQueue& commands, SoundEffectID effect);
 
+		int						getScoreValue();
+		bool					isScoreCounted() const;
+
 	private:
 		virtual void			drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
 		virtual void			updateCurrent(sf::Time dt, CommandQueue& commands);
@@ -79,6 +82,8 @@ class Aircraft : public Entity
 
 		TextNode*				mHealthDisplay;
 		TextNode*				mMissileDisplay;
+
+		bool					mScoreCounted;
 };
 
 #endif // AIRCRAFT_HPP

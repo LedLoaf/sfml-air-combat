@@ -40,6 +40,7 @@ Aircraft::Aircraft(Type type, const TextureHolder& textures, const FontHolder& f
 , mDirectionIndex(0)
 , mHealthDisplay(nullptr)
 , mMissileDisplay(nullptr)
+, mScoreCounted(false)
 {
 	mExplosion.setFrameSize(sf::Vector2i(256, 256));
 	mExplosion.setNumFrames(16);
@@ -301,11 +302,11 @@ void Aircraft::updateTexts()
 {
 	if (isDestroyed())
 	{
-		mHealthDisplay->setString("");
+		mHealthDisplay->setString("", true);
 	}
 	else
 	{
-		mHealthDisplay->setString(std::to_string(getHitpoints()) + " HP");
+		mHealthDisplay->setString(std::to_string(getHitpoints()) + " HP", true);
 	}
 	mHealthDisplay->setPosition(0.f, 50.f);
 	mHealthDisplay->setRotation(-getRotation());
@@ -314,11 +315,11 @@ void Aircraft::updateTexts()
 	{
 		if (mMissileAmmo == 0 || isDestroyed())
 		{
-			mMissileDisplay->setString("");
+			mMissileDisplay->setString("", true);
 		}
 		else
 		{
-			mMissileDisplay->setString("M: " + std::to_string(mMissileAmmo));
+			mMissileDisplay->setString("M: " + std::to_string(mMissileAmmo), true);
 		}
 	}
 }
@@ -364,5 +365,16 @@ void Aircraft::playLocalSound(CommandQueue& commands, SoundEffectID effect)
 		});
 
 	commands.push(command);
+}
+
+int Aircraft::getScoreValue()
+{
+	mScoreCounted = true;
+	return Table[static_cast<unsigned int>(mType)].scoreValue;
+}
+
+bool Aircraft::isScoreCounted() const
+{
+	return mScoreCounted;
 }
 

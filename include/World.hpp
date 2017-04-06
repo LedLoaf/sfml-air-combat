@@ -31,6 +31,7 @@ Concerning functionality, the World class contains:
 #include "Command.hpp"
 #include "CommandQueue.hpp"
 #include "SoundPlayer.hpp"
+#include "TextNode.hpp"
 
 #include <SFML/System/NonCopyable.hpp>
 #include <SFML/Graphics/View.hpp>
@@ -62,6 +63,7 @@ class World : private sf::NonCopyable
 		void				adaptPlayerVelocity();
 		void				handleCollisions();
 		void				updateSounds();
+		void				updateScore();
 
 		void				buildScene();
 		void				addEnemies();
@@ -113,6 +115,10 @@ class World : private sf::NonCopyable
 
 		std::vector<SpawnPoint>				mEnemySpawnPoints;
 		std::vector<Aircraft*>				mActiveEnemies;
+
+		int									mScore;
+		TextNode*							mScoreDisplay;
+		sf::Vector2f						mScorePosition;
 };
 
 bool matchesCategories(std::pair<SceneNode*, SceneNode*>& colliders, Category category1, Category category2);

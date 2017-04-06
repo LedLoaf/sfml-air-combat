@@ -7,13 +7,16 @@ TextNode::TextNode(const FontHolder& fonts, const std::string& text)
 {
 	mText.setFont(fonts.get(FontID::Main));
 	mText.setCharacterSize(20);
-	setString(text);
+	setString(text, false);
 }
 
-void TextNode::setString(const std::string& text)
+void TextNode::setString(const std::string& text, bool center)
 {
 	mText.setString(text);
-	centerOrigin(mText);
+	if (center == true)
+	{
+		centerOrigin(mText);
+	}
 }
 
 void TextNode::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const
