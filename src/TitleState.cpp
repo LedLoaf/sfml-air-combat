@@ -50,4 +50,3 @@ bool TitleState::handleEvent(const sf::Event& event)
 
 	return true;
 }
-

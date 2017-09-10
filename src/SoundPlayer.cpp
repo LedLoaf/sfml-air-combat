@@ -6,13 +6,13 @@ SoundPlayer::SoundPlayer()
 : mSoundBuffers()
 , mSounds()
 {
-	mSoundBuffers.load(SoundEffectID::AlliedGunfire,	"media/sound/AlliedGunfire.wav");
-	mSoundBuffers.load(SoundEffectID::EnemyGunfire,		"media/sound/EnemyGunfire.wav");
-	mSoundBuffers.load(SoundEffectID::Explosion1,		"media/sound/Explosion1.wav");
-	mSoundBuffers.load(SoundEffectID::Explosion2,		"media/sound/Explosion2.wav");
-	mSoundBuffers.load(SoundEffectID::LaunchMissile,	"media/sound/LaunchMissile.wav");
-	mSoundBuffers.load(SoundEffectID::CollectPickup,	"media/sound/CollectPickup.wav");
-	mSoundBuffers.load(SoundEffectID::Button,			"media/sound/Button.wav");
+	mSoundBuffers.load(SoundEffectID::AlliedGunfire, "media/sound/AlliedGunfire.wav");
+	mSoundBuffers.load(SoundEffectID::EnemyGunfire, "media/sound/EnemyGunfire.wav");
+	mSoundBuffers.load(SoundEffectID::Explosion1, "media/sound/Explosion1.wav");
+	mSoundBuffers.load(SoundEffectID::Explosion2, "media/sound/Explosion2.wav");
+	mSoundBuffers.load(SoundEffectID::LaunchMissile, "media/sound/LaunchMissile.wav");
+	mSoundBuffers.load(SoundEffectID::CollectPickup, "media/sound/CollectPickup.wav");
+	mSoundBuffers.load(SoundEffectID::Button, "media/sound/Button.wav");
 }
 
 void SoundPlayer::play(SoundEffectID effect)
@@ -30,4 +30,3 @@ void SoundPlayer::removeStoppedSounds()
 		return s.getStatus() == sf::Sound::Stopped;
 	});
 }
-

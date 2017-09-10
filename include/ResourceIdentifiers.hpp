@@ -48,9 +48,8 @@ namespace sf
 template <typename Resource, typename Identifier>
 class ResourceHolder;
 
-typedef ResourceHolder<sf::Texture, TextureID>				TextureHolder;
-typedef ResourceHolder<sf::Font, FontID>					FontHolder;
-typedef ResourceHolder<sf::SoundBuffer, SoundEffectID>		SoundBufferHolder;
+typedef ResourceHolder<sf::Texture, TextureID> TextureHolder;
+typedef ResourceHolder<sf::Font, FontID> FontHolder;
+typedef ResourceHolder<sf::SoundBuffer, SoundEffectID> SoundBufferHolder;
 
 #endif // RESOURCEIDENTIFIERS_HPP
-

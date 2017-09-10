@@ -25,38 +25,38 @@ class StateStack : private sf::NonCopyable
 		};
 
 	public:
-		explicit					StateStack(State::Context context);
+		explicit StateStack(State::Context context);
 
 		template <typename T>
-		void						registerState(StateID stateID);
+		void registerState(StateID stateID);
 
-		void						update(sf::Time dt);
-		void						draw();
-		void						handleEvent(const sf::Event& event);
+		void update(sf::Time dt);
+		void draw();
+		void handleEvent(const sf::Event& event);
 
-		void						pushState(StateID stateID);
-		void						popState();
-		void						clearStates();
+		void pushState(StateID stateID);
+		void popState();
+		void clearStates();
 
-		bool						isEmpty() const;
+		bool isEmpty() const;
 
 	private:
-		std::unique_ptr<State>		createState(StateID stateID);
-		void						applyPendingChanges();
+		std::unique_ptr<State> createState(StateID stateID);
+		void applyPendingChanges();
 
 	private:
 		struct PendingChange
 		{
-			explicit	PendingChange(Action action, StateID stateID = StateID::None);
-			Action		action;
-			StateID		stateID;
+			explicit PendingChange(Action action, StateID stateID = StateID::None);
+			Action action;
+			StateID stateID;
 		};
 
 	private:
-		std::vector<std::unique_ptr<State>>		mStack;
-		std::vector<PendingChange>				mPendingList;
-		State::Context							mContext;
-		std::map<StateID, std::function<std::unique_ptr<State>()>>	mFactories;
+		std::vector<std::unique_ptr<State>> mStack;
+		std::vector<PendingChange> mPendingList;
+		State::Context mContext;
+		std::map<StateID, std::function<std::unique_ptr<State>()>> mFactories;
 };
 
 template <typename T>
@@ -69,4 +69,3 @@ void StateStack::registerState(StateID stateID)
 }
 
 #endif // STATESTACK_HPP
-

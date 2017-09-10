@@ -14,10 +14,9 @@ struct Particle
 		TypeCount
 	};
 
-	sf::Vector2f	position;
-	sf::Color		color;
-	sf::Time		lifetime;
+	sf::Vector2f position;
+	sf::Color color;
+	sf::Time lifetime;
 };
 
 #endif // PARTICLE_HPP
-

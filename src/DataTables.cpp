@@ -45,7 +45,7 @@ std::vector<AircraftData> initializeAircraftData()
 	return data;
 }
 
-std::vector<ProjectileData>	initializeProjectileData()
+std::vector<ProjectileData> initializeProjectileData()
 {
 	std::vector<ProjectileData> data(static_cast<unsigned int>(Projectile::Type::TypeCount));
 
@@ -102,4 +102,3 @@ std::vector<ParticleData> initializeParticleData()
 
 	return data;
 }
-

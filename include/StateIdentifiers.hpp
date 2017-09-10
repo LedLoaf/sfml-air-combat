@@ -13,4 +13,3 @@ enum class StateID
 };
 
 #endif // STATEIDENTIFIERS_HPP
-

@@ -37,4 +37,3 @@ void Pickup::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) cons
 {
 	target.draw(mSprite, states);
 }
-

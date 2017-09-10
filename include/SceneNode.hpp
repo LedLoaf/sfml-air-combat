@@ -29,42 +29,41 @@ class CommandQueue;
 class SceneNode : public sf::Transformable, public sf::Drawable, private sf::NonCopyable
 {
 	public:
-		explicit					SceneNode(Category category = Category::None);
+		explicit SceneNode(Category category = Category::None);
 
-		void						attachChild(std::unique_ptr<SceneNode> child);
-		std::unique_ptr<SceneNode>	detachChild(const SceneNode& node);
+		void attachChild(std::unique_ptr<SceneNode> child);
+		std::unique_ptr<SceneNode> detachChild(const SceneNode& node);
 
-		void						update(sf::Time dt, CommandQueue& commands);
+		void update(sf::Time dt, CommandQueue& commands);
 
-		sf::Transform				getWorldTransform() const;
-		sf::Vector2f				getWorldPosition() const;
+		sf::Transform getWorldTransform() const;
+		sf::Vector2f getWorldPosition() const;
 
-		virtual unsigned int		getCategory() const;
-		void						onCommand(const Command& command, sf::Time dt);
+		virtual unsigned int getCategory() const;
+		void onCommand(const Command& command, sf::Time dt);
 
-		void						checkSceneCollision(SceneNode& sceneGraph, std::set<std::pair<SceneNode*, SceneNode*>>& collisionPairs);
-		void						checkNodeCollision(SceneNode& node, std::set<std::pair<SceneNode*, SceneNode*>>& collisionPairs);
-		void						removeWrecks();
-		virtual sf::FloatRect		getBoundingRect() const;
-		virtual bool				isMarkedForRemoval() const;
-		virtual bool				isDestroyed() const;
-
-	private:
-		virtual void				updateCurrent(sf::Time dt, CommandQueue& commands);
-		void						updateChildren(sf::Time dt, CommandQueue& commands);
-
-		virtual void				draw(sf::RenderTarget& target, sf::RenderStates states) const;
-		virtual void				drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
-		void						drawChildren(sf::RenderTarget& target, sf::RenderStates states) const;
+		void checkSceneCollision(SceneNode& sceneGraph, std::set<std::pair<SceneNode*, SceneNode*>>& collisionPairs);
+		void checkNodeCollision(SceneNode& node, std::set<std::pair<SceneNode*, SceneNode*>>& collisionPairs);
+		void removeWrecks();
+		virtual sf::FloatRect getBoundingRect() const;
+		virtual bool isMarkedForRemoval() const;
+		virtual bool isDestroyed() const;
 
 	private:
-		std::vector<std::unique_ptr<SceneNode>>		mChildren;
-		SceneNode*									mParent;
-		Category									mDefaultCategory;
+		virtual void updateCurrent(sf::Time dt, CommandQueue& commands);
+		void updateChildren(sf::Time dt, CommandQueue& commands);
+
+		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+		virtual void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
+		void drawChildren(sf::RenderTarget& target, sf::RenderStates states) const;
+
+	private:
+		std::vector<std::unique_ptr<SceneNode>>	mChildren;
+		SceneNode* mParent;
+		Category mDefaultCategory;
 };
 
 float distance(const SceneNode& lhs, const SceneNode& rhs);
 bool collision(const SceneNode& lhs, const SceneNode& rhs);
 
 #endif // SCENENODE_HPP
-

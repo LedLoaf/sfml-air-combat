@@ -25,35 +25,34 @@ class State
 		// holder of shared objects such as textures or Player between different states
 		struct Context
 		{
-								Context(sf::RenderWindow& window, TextureHolder& textures, FontHolder& fonts, Player& player,
-									MusicPlayer& music, SoundPlayer& sounds);
-			sf::RenderWindow*	window;
-			TextureHolder*		textures;
-			FontHolder*			fonts;
-			Player*				player;
-			MusicPlayer*		music;
-			SoundPlayer*		sounds;
+			Context(sf::RenderWindow& window, TextureHolder& textures, FontHolder& fonts, Player& player,
+				MusicPlayer& music, SoundPlayer& sounds);
+			sf::RenderWindow* window;
+			TextureHolder* textures;
+			FontHolder* fonts;
+			Player* player;
+			MusicPlayer* music;
+			SoundPlayer* sounds;
 		};
 
 	public:
-						State(StateStack& stack, Context context);
-		virtual			~State();
+		State(StateStack& stack, Context context);
+		virtual ~State();
 
-		virtual void	draw() = 0;
-		virtual bool	update(sf::Time dt) = 0;
-		virtual bool	handleEvent(const sf::Event& event) = 0;
+		virtual void draw() = 0;
+		virtual bool update(sf::Time dt) = 0;
+		virtual bool handleEvent(const sf::Event& event) = 0;
 
 	protected:
-		void			requestStackPush(StateID stateID);
-		void			requestStackPop();
-		void			requestStackClear();
+		void requestStackPush(StateID stateID);
+		void requestStackPop();
+		void requestStackClear();
 
-		Context			getContext() const;
+		Context getContext() const;
 
 	private:
-		StateStack*		mStack;
-		Context			mContext;
+		StateStack* mStack;
+		Context mContext;
 };
 
 #endif // STATE_HPP
-

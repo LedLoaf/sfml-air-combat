@@ -20,47 +20,46 @@ struct Direction
 	{
 	}
 
-	float	angle;
-	float	distance;
+	float angle;
+	float distance;
 };
 
 struct AircraftData
 {
-	int								hitpoints;
-	float							speed;
-	TextureID						texture;
-	sf::IntRect						textureRect;
-	sf::Time						fireInterval;
-	std::vector<Direction>			directions;
-	bool							hasRollAnimation;
-	int								scoreValue;
+	int hitpoints;
+	float speed;
+	TextureID texture;
+	sf::IntRect textureRect;
+	sf::Time fireInterval;
+	std::vector<Direction> directions;
+	bool hasRollAnimation;
+	int scoreValue;
 };
 
 struct ProjectileData
 {
-	int								damage;
-	float							speed;
-	TextureID						texture;
-	sf::IntRect						textureRect;
+	int damage;
+	float speed;
+	TextureID texture;
+	sf::IntRect textureRect;
 };
 
 struct PickupData
 {
-	std::function<void(Aircraft&)>	action;
-	TextureID						texture;
-	sf::IntRect						textureRect;
+	std::function<void(Aircraft&)> action;
+	TextureID texture;
+	sf::IntRect textureRect;
 };
 
 struct ParticleData
 {
-	sf::Color						color;
-	sf::Time						lifetime;
+	sf::Color color;
+	sf::Time lifetime;
 };
 
-std::vector<AircraftData>	initializeAircraftData();
-std::vector<ProjectileData>	initializeProjectileData();
-std::vector<PickupData>		initializePickupData();
-std::vector<ParticleData>	initializeParticleData();
+std::vector<AircraftData> initializeAircraftData();
+std::vector<ProjectileData> initializeProjectileData();
+std::vector<PickupData> initializePickupData();
+std::vector<ParticleData> initializeParticleData();
 
 #endif // DATATABLES_HPP
-

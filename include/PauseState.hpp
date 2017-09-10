@@ -11,18 +11,17 @@ class PauseState : public State
 {
 	public:
 
-						PauseState(StateStack& stack, Context context);
-						~PauseState();
+		PauseState(StateStack& stack, Context context);
+		~PauseState();
 
-		virtual void	draw();
-		virtual bool	update(sf::Time dt);
-		virtual bool	handleEvent(const sf::Event& event);
+		virtual void draw();
+		virtual bool update(sf::Time dt);
+		virtual bool handleEvent(const sf::Event& event);
 
 	private:
 
-		sf::Text		mPausedText;
-		GUI::Container 	mGUIContainer;
+		sf::Text mPausedText;
+		GUI::Container mGUIContainer;
 };
 
 #endif // PAUSESTATE_HPP
-

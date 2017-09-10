@@ -24,8 +24,8 @@ Application::Application()
 
 	mFonts.load(FontID::Main, "media/fonts/Sansation.ttf");
 
-	mTextures.load(TextureID::TitleScreen,		"media/textures/TitleScreen.png");
-	mTextures.load(TextureID::Buttons,			"media/textures/Buttons.png");
+	mTextures.load(TextureID::TitleScreen, "media/textures/TitleScreen.png");
+	mTextures.load(TextureID::Buttons, "media/textures/Buttons.png");
 
 	mMusic.setVolume(25.f);
 
@@ -59,7 +59,7 @@ void Application::run()
 }
 
 void Application::processInput()
-{	
+{
 	sf::Event event;
 
 	while (mWindow.pollEvent(event))
@@ -95,4 +95,3 @@ void Application::registerStates()
 	mStateStack.registerState<SettingsState>(StateID::Settings);
 	mStateStack.registerState<GameOverState>(StateID::GameOver);
 }
-

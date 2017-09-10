@@ -157,4 +157,3 @@ bool collision(const SceneNode& lhs, const SceneNode& rhs)
 {
 	return lhs.getBoundingRect().intersects(rhs.getBoundingRect());
 }
-

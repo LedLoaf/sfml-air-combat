@@ -44,13 +44,13 @@ void Player::initializeKeys()
 
 void Player::initializeActions()
 {
-	mActionBinding[Action::MoveLeft].action			= derivedAction<Aircraft>(AircraftMover(-1.f,  0.f));
-	mActionBinding[Action::MoveRight].action		= derivedAction<Aircraft>(AircraftMover(+1.f,  0.f));
-	mActionBinding[Action::MoveUp].action			= derivedAction<Aircraft>(AircraftMover( 0.f, -1.f));
-	mActionBinding[Action::MoveDown].action			= derivedAction<Aircraft>(AircraftMover( 0.f, +1.f));
+	mActionBinding[Action::MoveLeft].action = derivedAction<Aircraft>(AircraftMover(-1.f,  0.f));
+	mActionBinding[Action::MoveRight].action = derivedAction<Aircraft>(AircraftMover(+1.f,  0.f));
+	mActionBinding[Action::MoveUp].action = derivedAction<Aircraft>(AircraftMover( 0.f, -1.f));
+	mActionBinding[Action::MoveDown].action = derivedAction<Aircraft>(AircraftMover( 0.f, +1.f));
 
-	mActionBinding[Action::Fire].action				= derivedAction<Aircraft>([] (Aircraft& a, sf::Time){ a.fire(); });
-	mActionBinding[Action::LaunchMissile].action	= derivedAction<Aircraft>([] (Aircraft& a, sf::Time){ a.launchMissile(); });
+	mActionBinding[Action::Fire].action = derivedAction<Aircraft>([] (Aircraft& a, sf::Time){ a.fire(); });
+	mActionBinding[Action::LaunchMissile].action = derivedAction<Aircraft>([] (Aircraft& a, sf::Time){ a.launchMissile(); });
 }
 
 void Player::handleEvent(const sf::Event& event, CommandQueue& commandQueue)
@@ -134,4 +134,3 @@ Player::MissionStatus Player::getMissionStatus() const
 {
 	return mCurrentMissionStatus;
 }
-

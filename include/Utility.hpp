@@ -29,4 +29,3 @@ int randomInt(int exclusiveMax);
 std::string toString(sf::Keyboard::Key key);
 
 #endif // UTILITY_HPP
-

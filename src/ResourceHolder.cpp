@@ -54,4 +54,3 @@ const Resource& ResourceHolder<Resource, Identifier>::get(Identifier id) const
 template class ResourceHolder<sf::Texture, TextureID>;
 template class ResourceHolder<sf::Font, FontID>;
 template class ResourceHolder<sf::SoundBuffer, SoundEffectID>;
-

@@ -23,4 +23,3 @@ void TextNode::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) co
 {
 	target.draw(mText, states);
 }
-

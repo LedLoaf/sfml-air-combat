@@ -377,4 +377,3 @@ bool Aircraft::isScoreCounted() const
 {
 	return mScoreCounted;
 }
-

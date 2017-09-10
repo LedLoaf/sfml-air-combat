@@ -15,29 +15,28 @@
 class Application : private sf::NonCopyable
 {
 	public:
-								Application();
-		void					run();
+		Application();
+		void run();
 
 	private:
-		void					processInput();
-		void					update(sf::Time dt);
-		void					render();
+		void processInput();
+		void update(sf::Time dt);
+		void render();
 
-		void					registerStates();
+		void registerStates();
 
 	private:
-		static const sf::Time	TimePerFrame;
+		static const sf::Time TimePerFrame;
 
-		sf::RenderWindow		mWindow;
-		TextureHolder			mTextures;
-		FontHolder				mFonts;
-		Player					mPlayer;
+		sf::RenderWindow mWindow;
+		TextureHolder mTextures;
+		FontHolder mFonts;
+		Player mPlayer;
 
-		MusicPlayer				mMusic;
-		SoundPlayer				mSounds;
+		MusicPlayer mMusic;
+		SoundPlayer mSounds;
 
-		StateStack				mStateStack;
+		StateStack mStateStack;
 };
 
 #endif // APPLICATION_HPP
-

@@ -12,10 +12,10 @@ class SceneNode;
 
 struct Command
 {
-												Command();
+	Command();
 
-	std::function<void(SceneNode&, sf::Time)>	action;
-	unsigned int								category;
+	std::function<void(SceneNode&, sf::Time)> action;
+	unsigned int category;
 };
 
 // this template is to allow the action of a command to use a function with a signature such as void(Aircraft&, sf::Time)
@@ -33,4 +33,3 @@ std::function<void(SceneNode&, sf::Time)> derivedAction(Function fn)
 }
 
 #endif // COMMAND_HPP
-

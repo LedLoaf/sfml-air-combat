@@ -48,4 +48,3 @@ void EmitterNode::emitParticles(sf::Time dt)
 		mParticleSystem->addParticle(getWorldPosition());
 	}
 }
-

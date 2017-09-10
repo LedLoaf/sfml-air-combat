@@ -74,4 +74,3 @@ void Entity::updateCurrent(sf::Time dt, CommandQueue& commands)
 {
 	move(mVelocity * dt.asSeconds()); // move() is a function of sf::Transformable, with move(offset) = setPosition(getPosition() + offset)
 }
-

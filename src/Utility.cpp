@@ -176,4 +176,3 @@ std::string toString(sf::Keyboard::Key key)
 
 	return "";
 }
-

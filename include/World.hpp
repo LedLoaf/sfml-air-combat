@@ -47,32 +47,32 @@ namespace sf
 class World : private sf::NonCopyable
 {
 	public:
-		explicit			World(sf::RenderWindow& window, FontHolder& fonts, SoundPlayer& sounds);
+		explicit World(sf::RenderWindow& window, FontHolder& fonts, SoundPlayer& sounds);
 
-		void				update(sf::Time dt);
-		void				draw();
+		void update(sf::Time dt);
+		void draw();
 
-		CommandQueue&		getCommandQueue();
+		CommandQueue& getCommandQueue();
 
-		bool				hasAlivePlayer() const;
-		bool				playerHasReachedEnd() const;
+		bool hasAlivePlayer() const;
+		bool playerHasReachedEnd() const;
 
 	private:
-		void				loadTextures();
-		void				adaptPlayerPosition();
-		void				adaptPlayerVelocity();
-		void				handleCollisions();
-		void				updateSounds();
-		void				updateScore();
+		void loadTextures();
+		void adaptPlayerPosition();
+		void adaptPlayerVelocity();
+		void handleCollisions();
+		void updateSounds();
+		void updateScore();
 
-		void				buildScene();
-		void				addEnemies();
-		void				addEnemy(Aircraft::Type type, float relX, float relY);
-		void				spawnEnemies();
-		void				destroyEntitiesOutsideView();
-		void				guideMissiles();
-		sf::FloatRect		getViewBounds() const;
-		sf::FloatRect		getBattlefieldBounds() const;
+		void buildScene();
+		void addEnemies();
+		void addEnemy(Aircraft::Type type, float relX, float relY);
+		void spawnEnemies();
+		void destroyEntitiesOutsideView();
+		void guideMissiles();
+		sf::FloatRect getViewBounds() const;
+		sf::FloatRect getBattlefieldBounds() const;
 
 	private:
 		enum class Layer
@@ -98,30 +98,29 @@ class World : private sf::NonCopyable
 		};
 
 	private:
-		sf::RenderWindow&					mWindow;
-		sf::View							mWorldView;
-		TextureHolder						mTextures;
-		FontHolder&							mFonts;
-		SoundPlayer&						mSounds;
+		sf::RenderWindow& mWindow;
+		sf::View mWorldView;
+		TextureHolder mTextures;
+		FontHolder& mFonts;
+		SoundPlayer& mSounds;
 
-		SceneNode							mSceneGraph;
-		std::array<SceneNode*, static_cast<std::size_t>(Layer::LayerCount)>		mSceneLayers;
-		CommandQueue						mCommandQueue;
+		SceneNode mSceneGraph;
+		std::array<SceneNode*, static_cast<std::size_t>(Layer::LayerCount)> mSceneLayers;
+		CommandQueue mCommandQueue;
 
-		sf::FloatRect						mWorldBounds;
-		sf::Vector2f						mSpawnPosition;
-		float								mScrollSpeed;
-		Aircraft*							mPlayerAircraft;
+		sf::FloatRect mWorldBounds;
+		sf::Vector2f mSpawnPosition;
+		float mScrollSpeed;
+		Aircraft* mPlayerAircraft;
 
-		std::vector<SpawnPoint>				mEnemySpawnPoints;
-		std::vector<Aircraft*>				mActiveEnemies;
+		std::vector<SpawnPoint> mEnemySpawnPoints;
+		std::vector<Aircraft*> mActiveEnemies;
 
-		int									mScore;
-		TextNode*							mScoreDisplay;
-		sf::Vector2f						mScorePosition;
+		int mScore;
+		TextNode* mScoreDisplay;
+		sf::Vector2f mScorePosition;
 };
 
 bool matchesCategories(std::pair<SceneNode*, SceneNode*>& colliders, Category category1, Category category2);
 
 #endif // WORLD_HPP
-

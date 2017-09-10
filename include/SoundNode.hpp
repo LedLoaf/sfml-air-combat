@@ -9,13 +9,12 @@ class SoundPlayer;
 class SoundNode : public SceneNode
 {
 	public:
-		explicit				SoundNode(SoundPlayer& player);
-		void					playSound(SoundEffectID sound);
-		virtual unsigned int	getCategory() const;
+		explicit SoundNode(SoundPlayer& player);
+		void playSound(SoundEffectID sound);
+		virtual unsigned int getCategory() const;
 
 	private:
-		SoundPlayer&			mSounds;
+		SoundPlayer& mSounds;
 };
 
 #endif // SOUNDNODE_HPP
-

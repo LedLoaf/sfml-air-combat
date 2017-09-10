@@ -111,4 +111,3 @@ void Button::changeTexture(Type buttonType)
 }
 
 }
-

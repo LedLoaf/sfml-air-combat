@@ -39,7 +39,7 @@ Particle::Type ParticleNode::getParticleType() const
 
 unsigned int ParticleNode::getCategory() const
 {
-	return static_cast<unsigned int>(Category::ParticleSystem);	
+	return static_cast<unsigned int>(Category::ParticleSystem);
 }
 
 void ParticleNode::updateCurrent(sf::Time dt, CommandQueue&)
@@ -100,4 +100,3 @@ void ParticleNode::computeVertices() const
 		addVertex(pos.x - half.x, pos.y + half.y, 0.f,    size.y, color);
 	}
 }
-

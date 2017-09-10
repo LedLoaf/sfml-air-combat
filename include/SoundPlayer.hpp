@@ -14,16 +14,14 @@
 class SoundPlayer : private sf::NonCopyable
 {
 	public:
-						SoundPlayer();
+		SoundPlayer();
 
-		void			play(SoundEffectID effect);
-
-		void			removeStoppedSounds();
+		void play(SoundEffectID effect);
+		void removeStoppedSounds();
 
 	private:
-		SoundBufferHolder		mSoundBuffers;
-		std::list<sf::Sound>	mSounds; // list because a vector might reallocate playing sounds as new ones are added
+		SoundBufferHolder mSoundBuffers;
+		std::list<sf::Sound> mSounds; // list because a vector might reallocate playing sounds as new ones are added
 };
 
 #endif // SOUNDPLAYER_HPP
-

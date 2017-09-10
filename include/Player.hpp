@@ -37,27 +37,26 @@ class Player
 		};
 
 	public:
-							Player();
+			Player();
 
-		void				handleEvent(const sf::Event& event, CommandQueue& commandQueue);
-		void				handleRealTimeInput(CommandQueue& commandQueue);
+		void handleEvent(const sf::Event& event, CommandQueue& commandQueue);
+		void handleRealTimeInput(CommandQueue& commandQueue);
 
-		void				assignKey(Action action, sf::Keyboard::Key key);
-		sf::Keyboard::Key	getAssignedKey(Action action) const;
+		void assignKey(Action action, sf::Keyboard::Key key);
+		sf::Keyboard::Key getAssignedKey(Action action) const;
 
-		void 					setMissionStatus(MissionStatus status);
-		MissionStatus 			getMissionStatus() const;
-
-	private:
-		void				initializeKeys();
-		void				initializeActions();
-		static bool			isRealTimeAction(Action action);
+		void setMissionStatus(MissionStatus status);
+		MissionStatus getMissionStatus() const;
 
 	private:
-		std::map<sf::Keyboard::Key, Action>		mKeyBinding;
-		std::map<Action, Command>				mActionBinding;
-		MissionStatus 							mCurrentMissionStatus;
+		void initializeKeys();
+		void initializeActions();
+		static bool isRealTimeAction(Action action);
+
+	private:
+		std::map<sf::Keyboard::Key, Action> mKeyBinding;
+		std::map<Action, Command> mActionBinding;
+		MissionStatus mCurrentMissionStatus;
 };
 
 #endif // PLAYER_HPP
-

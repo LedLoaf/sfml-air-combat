@@ -21,20 +21,19 @@ class Pickup : public Entity
 		};
 
 	public:
-								Pickup(Type type, const TextureHolder& textures);
+		Pickup(Type type, const TextureHolder& textures);
 
-		virtual unsigned int	getCategory() const;
-		virtual sf::FloatRect	getBoundingRect() const;
+		virtual unsigned int getCategory() const;
+		virtual sf::FloatRect getBoundingRect() const;
 
-		void					apply(Aircraft& player) const;
+		void apply(Aircraft& player) const;
 
 	protected:
-		virtual void			drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
+		virtual void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
 
 	private:
-		Type					mType;
-		sf::Sprite				mSprite;
+		Type mType;
+		sf::Sprite mSprite;
 };
 
 #endif // PICKUP_HPP
-

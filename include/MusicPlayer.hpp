@@ -12,19 +12,18 @@
 class MusicPlayer : private sf::NonCopyable
 {
 	public:
-									MusicPlayer();
+		MusicPlayer();
 
-		void							play(MusicID theme);
-		void							stop();
+		void play(MusicID theme);
+		void stop();
 
-		void							setPaused(bool paused);
-		void							setVolume(float volume);
+		void setPaused(bool paused);
+		void setVolume(float volume);
 
 	private:
-		sf::Music						mMusic;
-		std::map<MusicID, std::string>	mFilenames;
-		float							mVolume;
+		sf::Music mMusic;
+		std::map<MusicID, std::string> mFilenames;
+		float mVolume;
 };
 
 #endif // MUSICPLAYER_HPP
-

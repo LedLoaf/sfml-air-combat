@@ -16,7 +16,7 @@ GameOverState::GameOverState(StateStack& stack, Context context)
 	mGameOverText.setFont(font);
 	if (context.player->getMissionStatus() == Player::MissionStatus::MissionFailure)
 	{
-		mGameOverText.setString("Mission failed!");	
+		mGameOverText.setString("Mission failed!");
 	}
 	else
 	{
@@ -56,4 +56,3 @@ bool GameOverState::handleEvent(const sf::Event& event)
 {
 	return false;
 }
-

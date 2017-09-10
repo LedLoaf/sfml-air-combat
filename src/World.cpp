@@ -391,4 +391,3 @@ bool matchesCategories(std::pair<SceneNode*, SceneNode*>& colliders, Category ca
 		return false;
 	}
 }
-

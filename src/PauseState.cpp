@@ -74,4 +74,3 @@ bool PauseState::handleEvent(const sf::Event& event)
 	mGUIContainer.handleEvent(event);
 	return false;
 }
-

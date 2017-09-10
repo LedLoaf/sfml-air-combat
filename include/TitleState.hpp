@@ -9,19 +9,18 @@
 class TitleState : public State
 {
 	public:
-						TitleState(StateStack& stack, Context context);
+		TitleState(StateStack& stack, Context context);
 
-		virtual void	draw();
-		virtual bool	update(sf::Time dt);
-		virtual bool	handleEvent(const sf::Event& event);
+		virtual void draw();
+		virtual bool update(sf::Time dt);
+		virtual bool handleEvent(const sf::Event& event);
 
 	private:
-		sf::Sprite		mBackgroundSprite;
+		sf::Sprite mBackgroundSprite;
 
-		sf::Text		mText;
-		bool			mShowText;
-		sf::Time		mTextBlinkTime;
+		sf::Text mText;
+		bool mShowText;
+		sf::Time mTextBlinkTime;
 };
 
 #endif // TITLESTATE_HPP
-

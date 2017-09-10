@@ -12,27 +12,26 @@ namespace GUI
 class Container : public Component
 {
 	public:
-						Container();
+		Container();
 
-		void			pack(std::shared_ptr<Component> component);
+		void pack(std::shared_ptr<Component> component);
 
-		virtual bool	isSelectable() const;
-		virtual void	handleEvent(const sf::Event& event);
-
-	private:
-		virtual void	draw(sf::RenderTarget& target, sf::RenderStates states) const;
-
-		bool			hasSelection() const;
-		void			select(std::size_t index);
-		void			selectNext();
-		void			selectPrevious();
+		virtual bool isSelectable() const;
+		virtual void handleEvent(const sf::Event& event);
 
 	private:
-		std::vector<std::shared_ptr<Component>>	mChildren;
-		int										mSelectedChild;
+		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
+		bool hasSelection() const;
+		void select(std::size_t index);
+		void selectNext();
+		void selectPrevious();
+
+	private:
+		std::vector<std::shared_ptr<Component>> mChildren;
+		int mSelectedChild;
 };
 
 }
 
 #endif // CONTAINER_HPP
-
